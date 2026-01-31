@@ -105,7 +105,7 @@ func _spawn_asteroid() -> void:
     asteroid.destroyed.connect(_on_enemy_destroyed)
 
 func _spawn_powerup() -> void:
-    var pickup_scene := POWER_UP_SCENE if randf() < 0.6 else HEALTH_ITEM_SCENE
+    var pickup_scene := randf() < 0.6 ? POWER_UP_SCENE : HEALTH_ITEM_SCENE
     var pickup := pickup_scene.instantiate()
     add_child(pickup)
     var viewport_size := get_viewport_rect().size
