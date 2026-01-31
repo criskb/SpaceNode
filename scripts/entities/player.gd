@@ -1,4 +1,5 @@
 extends Area2D
+class_name Player
 
 signal fired(origin: Vector2, direction: Vector2, damage: int)
 signal took_damage
@@ -14,16 +15,20 @@ var hull_index := 0
 
 var max_health := 100
 var health := 100
+var engine_time := 0.0
 
 func _ready() -> void:
     add_to_group("player")
     set_collision_layer_value(1, true)
     set_collision_mask_value(2, true)
     set_collision_mask_value(4, true)
+    set_process(true)
+    queue_redraw()
 
 func _process(delta: float) -> void:
     _handle_movement(delta)
     _handle_shooting(delta)
+    engine_time += delta
     queue_redraw()
 
 func _handle_movement(delta: float) -> void:
@@ -66,16 +71,21 @@ func apply_power_up() -> void:
     weapon_level = clamp(weapon_level + 1, 1, 5)
 
 func _draw() -> void:
-    var color_palette := [
+    var color_palette: Array[Color] = [
         Color(0.2, 0.7, 1.0),
         Color(0.6, 0.4, 1.0),
         Color(0.2, 1.0, 0.6)
     ]
-    var base_color := color_palette[hull_index % color_palette.size()]
+    var base_color: Color = color_palette[hull_index % color_palette.size()]
     draw_polygon(
         PackedVector2Array([Vector2(0, -20), Vector2(14, 16), Vector2(0, 8), Vector2(-14, 16)]),
         PackedColorArray([base_color, base_color, base_color, base_color])
     )
-    var wing_color := base_color.lightened(0.2)
+    var wing_color: Color = base_color.lightened(0.2)
     draw_line(Vector2(-16, 8), Vector2(-32, 20), wing_color, 3)
     draw_line(Vector2(16, 8), Vector2(32, 20), wing_color, 3)
+    var flame := 1.0 + sin(engine_time * 12.0) * 0.2
+    draw_polygon(
+        PackedVector2Array([Vector2(-6, 18), Vector2(0, 32 * flame), Vector2(6, 18)]),
+        PackedColorArray([Color(1.0, 0.6, 0.2), Color(1.0, 0.9, 0.5), Color(1.0, 0.6, 0.2)])
+    )
