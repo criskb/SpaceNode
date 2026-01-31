@@ -66,16 +66,16 @@ func apply_power_up() -> void:
     weapon_level = clamp(weapon_level + 1, 1, 5)
 
 func _draw() -> void:
-    var color_palette := [
+    var color_palette: Array[Color] = [
         Color(0.2, 0.7, 1.0),
         Color(0.6, 0.4, 1.0),
         Color(0.2, 1.0, 0.6)
     ]
-    var base_color := color_palette[hull_index % color_palette.size()]
+    var base_color: Color = color_palette[hull_index % color_palette.size()]
     draw_polygon(
         PackedVector2Array([Vector2(0, -20), Vector2(14, 16), Vector2(0, 8), Vector2(-14, 16)]),
         PackedColorArray([base_color, base_color, base_color, base_color])
     )
-    var wing_color := base_color.lightened(0.2)
+    var wing_color: Color = base_color.lightened(0.2)
     draw_line(Vector2(-16, 8), Vector2(-32, 20), wing_color, 3)
     draw_line(Vector2(16, 8), Vector2(32, 20), wing_color, 3)

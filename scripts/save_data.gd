@@ -21,7 +21,7 @@ func load_data() -> void:
 
     var content := file.get_as_text()
     file.close()
-    var parsed := JSON.parse_string(content)
+    var parsed: Variant = JSON.parse_string(content)
     if typeof(parsed) != TYPE_DICTIONARY:
         return
 
