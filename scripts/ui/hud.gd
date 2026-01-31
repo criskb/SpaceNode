@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name Hud
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var score_label: Label = $ScoreLabel
