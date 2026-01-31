@@ -32,7 +32,10 @@ func _ready() -> void:
     _queue_dialog("Incoming transmission... Stay sharp, pilot.")
 
 func _setup_player() -> void:
-    player = PLAYER_SCENE.instantiate()
+    player = PLAYER_SCENE.instantiate() as Player
+    if player == null:
+        push_error("Player scene failed to instantiate.")
+        return
     add_child(player)
     var viewport_size := get_viewport_rect().size
     player.global_position = Vector2(viewport_size.x * 0.5, viewport_size.y - 120)
