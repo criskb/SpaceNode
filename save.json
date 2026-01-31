@@ -1,0 +1,25 @@
+{
+  "credits": 43,
+  "wing_level": 3,
+  "weapon_level": 3,
+  "weapon_mode": "basic",
+  "hull_type": "arrow",
+  "nozzle_type": "vector",
+  "ship_color": [
+    120,
+    255,
+    200
+  ],
+  "custom_color": true,
+  "owned_hulls": [
+    "arrow"
+  ],
+  "owned_colors": [
+    "ember",
+    "mint"
+  ],
+  "owned_nozzles": [
+    "classic",
+    "vector"
+  ]
+}
