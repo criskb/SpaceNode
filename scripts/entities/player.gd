@@ -14,6 +14,7 @@ var hull_index := 0
 
 var max_health := 100
 var health := 100
+var engine_time := 0.0
 
 func _ready() -> void:
     add_to_group("player")
@@ -24,6 +25,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     _handle_movement(delta)
     _handle_shooting(delta)
+    engine_time += delta
     queue_redraw()
 
 func _handle_movement(delta: float) -> void:
@@ -79,3 +81,8 @@ func _draw() -> void:
     var wing_color: Color = base_color.lightened(0.2)
     draw_line(Vector2(-16, 8), Vector2(-32, 20), wing_color, 3)
     draw_line(Vector2(16, 8), Vector2(32, 20), wing_color, 3)
+    var flame := 1.0 + sin(engine_time * 12.0) * 0.2
+    draw_polygon(
+        PackedVector2Array([Vector2(-6, 18), Vector2(0, 32 * flame), Vector2(6, 18)]),
+        PackedColorArray([Color(1.0, 0.6, 0.2), Color(1.0, 0.9, 0.5), Color(1.0, 0.6, 0.2)])
+    )
