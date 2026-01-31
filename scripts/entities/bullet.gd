@@ -12,6 +12,7 @@ func _ready() -> void:
     set_collision_mask_value(2, true)
     set_collision_mask_value(5, true)
     area_entered.connect(_on_area_entered)
+    set_process(true)
     queue_redraw()
 
 func _process(delta: float) -> void:

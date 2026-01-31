@@ -27,6 +27,7 @@ func _ready() -> void:
     wing_level = SaveData.wing_level
     hull_index = SaveData.hull_index
     _refresh_labels()
+    set_process(true)
     queue_redraw()
 
     weapon_minus.pressed.connect(func(): _change_level("weapon", -1))

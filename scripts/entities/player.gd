@@ -21,6 +21,8 @@ func _ready() -> void:
     set_collision_layer_value(1, true)
     set_collision_mask_value(2, true)
     set_collision_mask_value(4, true)
+    set_process(true)
+    queue_redraw()
 
 func _process(delta: float) -> void:
     _handle_movement(delta)
