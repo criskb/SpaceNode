@@ -10,9 +10,9 @@ const BOSS_SCENE := preload("res://scenes/entities/Boss.tscn")
 const POWER_UP_SCENE := preload("res://scenes/entities/PowerUp.tscn")
 const HEALTH_ITEM_SCENE := preload("res://scenes/entities/HealthItem.tscn")
 
-@onready var hud: CanvasLayer = $Hud
+@onready var hud: Hud = $Hud
 
-var player: Area2D
+var player: Player
 var score := 0
 var level := 1
 var boss_spawned := false

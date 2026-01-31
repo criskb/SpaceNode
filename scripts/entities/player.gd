@@ -1,4 +1,5 @@
 extends Area2D
+class_name Player
 
 signal fired(origin: Vector2, direction: Vector2, damage: int)
 signal took_damage
