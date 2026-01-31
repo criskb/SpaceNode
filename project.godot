@@ -23,4 +23,4 @@ shoot={"deadzone":0.5,"events":[{"type":"InputEventKey","keycode":32}]}
 pause={"deadzone":0.5,"events":[{"type":"InputEventKey","keycode":16777217}]}
 
 [autoload]
-SaveData=\"*res://scripts/save_data.gd\"
+SaveData="*res://scripts/save_data.gd"
