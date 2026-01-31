@@ -21,7 +21,7 @@ var enemy_timer := Timer.new()
 var asteroid_timer := Timer.new()
 var powerup_timer := Timer.new()
 
-var dialog_queue: Array[String] = []
+var dialog_queue: Array[String] = Array[String]()
 var dialog_timer := 0.0
 var dialog_clear_timer := 0.0
 
